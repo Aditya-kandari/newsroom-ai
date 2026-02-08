@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Article Analytics</title>
+
+  <!-- Analytics styling -->
+  <link rel="stylesheet" href="css/style2.css">
+  <!-- Navbar + cursor styling -->
+  <link rel="stylesheet" href="css/style1.css">
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR (now functional) -->
+<nav>
+  <div class="logo">📰 Newsroom AI</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="articles.html">Articles</a>
+    <a href="analytics.html">Analytics</a>
+  </div>
+</nav>
+
+<main class="analytics-container">
+
+  <!-- FULL ARTICLE -->
+  <section class="glass article-section">
+    <h1>Government Policy Faces Criticism</h1>
+    <p>
+      This is the full article content. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+    </p>
+  </section>
+
+  <!-- COMMENTS SECTION -->
+  <section class="glass comments-section">
+    <h2>Public Comments</h2>
+
+    <input id="username" type="text" placeholder="Your name">
+    <textarea id="comment-input" placeholder="Write your comment..."></textarea>
+
+    <button class="action-btn" onclick="postComment()">Post Comment</button>
+
+    <div id="comments-list"></div>
+  </section>
+
+  <!-- AI COMMENT SUMMARY -->
+  <section class="glass summary-section">
+    <h2>AI Comment Summary</h2>
+
+    <p id="summary-text" class="collapsed">
+      AI analysis shows that most users are dissatisfied with the policy.
+      A significant portion of comments focus on political accountability,
+      while others discuss economic impact and public justice concerns.
+      Sentiment is largely negative with strong emotional expressions.
+    </p>
+
+    <button class="action-btn small" onclick="toggleSummary(event)">
+      View More
+    </button>
+  </section>
+
+</main>
+
+<!-- ✅ Cursor + navigation logic -->
+<script src="js/app1.js"></script>
+
+<!-- Existing analytics logic -->
+<script src="js/app2.js?v=2"></script>
+
+</body>
+</html>

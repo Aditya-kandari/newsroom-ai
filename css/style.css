@@ -1,0 +1,265 @@
+/* =========================
+   GLOBAL RESET & VARIABLES
+========================= */
+:root {
+  --primary: #1e3c72;
+  --secondary: #2a5298;
+  --accent: #f39c12;
+  --text-light: #ffffff;
+  --text-dark: #222;
+  --bg-dark: #0f172a;
+
+  /* The Hindu dynamic colors */
+  --hindu-blue: #003366;
+  --hindu-maroon: #800000;
+  --hindu-gold: #cfa44a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none; /* Disable default cursor */
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+.cursor {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease;
+  z-index: 9999;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+  z-index: 9998;
+}
+
+/* Hover enlarge */
+a:hover ~ .cursor,
+button:hover ~ .cursor {
+  transform: scale(1.5);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(14px);
+  background: rgba(15, 23, 42, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  animation: slideDown 1s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* LOGO */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--hindu-blue),
+    var(--hindu-gold),
+    var(--hindu-maroon)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: logoFlow 5s linear infinite;
+}
+
+@keyframes logoFlow {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
+/* NAV LINKS */
+.nav-links a {
+  margin-left: 28px;
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero {
+  height: 100vh;
+  padding-top: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, rgba(243, 156, 18, 0.15), transparent),
+    linear-gradient(135deg, #020617, #020617);
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  font-size: 3rem;
+  max-width: 900px;
+  line-height: 1.2;
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    var(--accent),
+    #ffffff
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 4s infinite alternate;
+}
+
+@keyframes textGlow {
+  from {
+    filter: drop-shadow(0 0 6px rgba(243, 156, 18, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 14px rgba(243, 156, 18, 0.7));
+  }
+}
+
+.hero p {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.hero button {
+  margin-top: 40px;
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    #ffd166
+  );
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.hero button:hover::before {
+  left: 100%;
+}
+
+.hero button:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(243, 156, 18, 0.4);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  nav {
+    padding: 14px 30px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .nav-links a {
+    margin-left: 16px;
+  }
+}
