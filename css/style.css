@@ -9,7 +9,6 @@
   --text-dark: #222;
   --bg-dark: #0f172a;
 
-  /* The Hindu dynamic colors */
   --hindu-blue: #003366;
   --hindu-maroon: #800000;
   --hindu-gold: #cfa44a;
@@ -19,47 +18,28 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none; /* Disable default cursor */
-}
-
-body {
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background: linear-gradient(135deg, #020617, #0f172a);
-  color: var(--text-light);
-  overflow-x: hidden;
 }
 
 /* =========================
-   CUSTOM CURSOR
+   BODY + BACKGROUND
 ========================= */
-.cursor {
-  position: fixed;
-  width: 14px;
-  height: 14px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s ease;
-  z-index: 9999;
+body {
+  font-family: "Segoe UI", sans-serif;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../images/newsroom-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--text-light);
 }
 
-.cursor-ring {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: all 0.15s ease;
-  z-index: 9998;
-}
-
-/* Hover enlarge */
-a:hover ~ .cursor,
-button:hover ~ .cursor {
-  transform: scale(1.5);
+/* =========================
+   CURSOR
+========================= */
+a,
+button {
+  cursor: pointer;
 }
 
 /* =========================
@@ -74,7 +54,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   backdrop-filter: blur(14px);
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(0, 0, 0, 0.85);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   animation: slideDown 1s ease;
@@ -93,23 +73,11 @@ nav {
 
 /* LOGO */
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 1px;
-  background: linear-gradient(
-    90deg,
-    var(--hindu-blue),
-    var(--hindu-gold),
-    var(--hindu-maroon)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: logoFlow 5s linear infinite;
-}
-
-@keyframes logoFlow {
-  0% { background-position: 0% }
-  100% { background-position: 200% }
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 /* NAV LINKS */
@@ -134,7 +102,7 @@ nav {
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: #ffffff;
 }
 
 .nav-links a:hover::after {
@@ -152,9 +120,6 @@ nav {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background:
-    radial-gradient(circle at top, rgba(243, 156, 18, 0.15), transparent),
-    linear-gradient(135deg, #020617, #020617);
   animation: fadeIn 1.5s ease;
 }
 
@@ -169,35 +134,22 @@ nav {
   }
 }
 
+/* HERO TEXT */
 .hero h1 {
   font-size: 3rem;
   max-width: 900px;
   line-height: 1.2;
-  background: linear-gradient(
-    90deg,
-    #ffffff,
-    var(--accent),
-    #ffffff
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textGlow 4s infinite alternate;
-}
-
-@keyframes textGlow {
-  from {
-    filter: drop-shadow(0 0 6px rgba(243, 156, 18, 0.3));
-  }
-  to {
-    filter: drop-shadow(0 0 14px rgba(243, 156, 18, 0.7));
-  }
+  color: #ffffff;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
 }
 
 .hero p {
   margin-top: 18px;
   font-size: 1.1rem;
+  color: #ffffff;
   opacity: 0.9;
   letter-spacing: 0.5px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 /* =========================
@@ -208,43 +160,40 @@ nav {
   padding: 14px 40px;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: #ffffff;
   background: linear-gradient(
     135deg,
-    var(--accent),
-    #ffd166
+    #0a0805,
+    #000000
   );
   border: none;
   border-radius: 30px;
-  cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.5),
-    transparent
-  );
-  transition: left 0.5s ease;
+  padding: 10px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 22px;
+  background: #000000;   /* black background */
+  color: #ffffff;        /* white text */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+
 
 .hero button:hover::before {
   left: 100%;
 }
 
 .hero button:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 12px 30px rgba(243, 156, 18, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(169, 166, 166, 0.45);
 }
 
 /* =========================

@@ -1,75 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AI Article Analytics</title>
+  <meta charset="UTF-8" />
+  <title>Comment Analytics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Analytics styling -->
-  <link rel="stylesheet" href="css/style2.css">
-  <!-- Navbar + cursor styling -->
-  <link rel="stylesheet" href="css/style1.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="css/analytics.css" />
 </head>
 
 <body>
 
-<!-- ✅ NAVBAR (now functional) -->
-<nav>
+<!-- NAVBAR -->
+<nav class="navbar">
   <div class="logo">📰 Newsroom AI</div>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="articles.html">Articles</a>
-    <a href="analytics.html">Analytics</a>
+    <a href="analytics.html" class="active">Analytics</a>
   </div>
 </nav>
 
-<main class="analytics-container">
+<main class="dashboard">
 
-  <!-- FULL ARTICLE -->
-  <section class="glass article-section">
-    <h1>Government Policy Faces Criticism</h1>
-    <p>
-      This is the full article content. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
-    </p>
+  <!-- HEADER -->
+  <section class="header">
+    <h1>Comment Intelligence</h1>
+    <p>Machine-assisted analysis of public discussion on this article</p>
   </section>
 
-  <!-- COMMENTS SECTION -->
-  <section class="glass comments-section">
-    <h2>Public Comments</h2>
-
-    <input id="username" type="text" placeholder="Your name">
-    <textarea id="comment-input" placeholder="Write your comment..."></textarea>
-
-    <button class="action-btn" onclick="postComment()">Post Comment</button>
-
-    <div id="comments-list"></div>
+  <!-- KPI ROW -->
+  <section class="kpi-row">
+    <div class="kpi">
+      <span>Total Comments</span>
+      <strong>128</strong>
+    </div>
+    <div class="kpi">
+      <span>Active Users</span>
+      <strong>46</strong>
+    </div>
+    <div class="kpi">
+      <span>Dominant Topic</span>
+      <strong>Data Security</strong>
+    </div>
+    <div class="kpi">
+      <span>Engagement Level</span>
+      <strong>High</strong>
+    </div>
   </section>
 
-  <!-- AI COMMENT SUMMARY -->
-  <section class="glass summary-section">
-    <h2>AI Comment Summary</h2>
+  <!-- ANALYSIS GRID -->
+  <section class="analysis-grid">
 
-    <p id="summary-text" class="collapsed">
-      AI analysis shows that most users are dissatisfied with the policy.
-      A significant portion of comments focus on political accountability,
-      while others discuss economic impact and public justice concerns.
-      Sentiment is largely negative with strong emotional expressions.
-    </p>
+    <!-- TOPIC DISTRIBUTION -->
+    <div class="panel">
+      <h2>Topic Distribution</h2>
+      <canvas id="topicChart"></canvas>
+    </div>
 
-    <button class="action-btn small" onclick="toggleSummary(event)">
-      View More
-    </button>
+    <!-- SENTIMENT -->
+    <div class="panel">
+      <h2>Sentiment Breakdown</h2>
+      <canvas id="sentimentChart"></canvas>
+    </div>
+
+  </section>
+
+  <!-- KEY INSIGHTS -->
+  <section class="panel insights">
+    <h2>Key Observations</h2>
+    <ul>
+      <li>Majority of comments are related to <strong>data security risks</strong> and regulatory oversight.</li>
+      <li>Government policy and geopolitical implications form the second most discussed cluster.</li>
+      <li>Limited but consistent discussion on internet accessibility in remote regions.</li>
+    </ul>
+    <span class="note">AI-assisted preview · ML model under development</span>
   </section>
 
 </main>
 
-<!-- ✅ Cursor + navigation logic -->
-<script src="js/app1.js"></script>
-
-<!-- Existing analytics logic -->
-<script src="js/app2.js?v=2"></script>
-
+<script src="js/analytics.js"></script>
 </body>
 </html>
