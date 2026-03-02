@@ -138,10 +138,10 @@ Analytics API Layer
 
 On server startup:
 
--   🔹 Article fetcher runs in a background thread\
--   🔹 Emotion classification watcher starts\
--   🔹 Model loads into memory\
--   🔹 MongoDB indexing ensures performance
+-   Article fetcher runs in a background thread\
+-   Emotion classification watcher starts\
+-   Model loads into memory\
+-   MongoDB indexing ensures performance
 
 This ensures real-time scalability and continuous processing.
 
