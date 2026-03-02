@@ -1,84 +1,73 @@
-# 📰 Newsroom AI -- Intelligent Comment Sentiment Analysis & Summarization Engine
+# 📰 Newsroom AI -- Intelligent Comment Sentiment & Emotion Analytics
 
-> Transforming raw audience reactions into actionable newsroom
-> intelligence using AI.
-
-------------------------------------------------------------------------
-
-## 🚀 Overview
-
-**Newsroom AI** is an advanced AI-driven analytics platform designed to
-help media organizations understand public opinion at scale.\
-It leverages **BERT-based Natural Language Processing (NLP)** to analyze
-comment sentiment and generate intelligent summaries in real time.
-
-In today's digital journalism landscape, thousands of comments are
-generated per article. Extracting meaningful insights manually is
-inefficient.\
-This system automates that process with accuracy, scalability, and
-contextual understanding.
+> A full-stack AI-powered newsroom intelligence platform built with
+> FastAPI, MongoDB, and Transformer-based NLP models.
 
 ------------------------------------------------------------------------
 
-## 🎯 Problem Statement
+## 🚀 Project Overview
 
-News organizations face challenges in:
+Newsroom AI is a real-time comment intelligence system that:
 
--   Analyzing massive volumes of reader comments
--   Identifying public sentiment trends quickly
--   Detecting negative or toxic engagement
--   Extracting key discussion points from lengthy threads
+-   Fetches news articles automatically
+-   Stores articles & comments in MongoDB
+-   Classifies user emotions using a transformer-based sentiment model
+-   Clusters discussions into meaningful topics
+-   Generates AI-powered summaries
+-   Provides advanced analytics via a dynamic dashboard
 
-Manual moderation and analysis are slow, inconsistent, and not scalable.
-
-------------------------------------------------------------------------
-
-## 💡 Our Solution
-
-Newsroom AI provides:
-
--   ✅ Automated Sentiment Classification (Positive / Neutral /
-    Negative)
--   ✅ AI-Generated Comment Summaries
--   ✅ Article-Level Analytics Dashboard
--   ✅ Background Data Fetching & Processing Pipeline
--   ✅ Scalable API-Driven Architecture
-
-The system transforms raw comments into structured business
-intelligence.
+This project is designed to transform raw audience engagement into
+structured, decision-ready insights for digital media platforms.
 
 ------------------------------------------------------------------------
 
-## 🧠 AI & NLP Architecture
+## 🧠 Core Capabilities
 
-We use a **BERT (Bidirectional Encoder Representations from
-Transformers)** model for:
+### 1️⃣ Emotion Classification Engine
 
--   Context-aware sentiment analysis
--   Deep semantic understanding
--   Improved classification accuracy over traditional ML models
+-   Uses a transformer-based NLP model
+-   Classifies comments into:
+    -   Joy
+    -   Love
+    -   Anger
+    -   Sadness
+    -   Fear
+-   Runs via a background watcher process
+-   Automatically updates MongoDB with `emotion_label`
 
-Why BERT?
+### 2️⃣ AI-Powered Comment Summarization
 
--   Bidirectional context understanding
--   State-of-the-art NLP performance
--   Handles nuanced human language effectively
+-   Aggregates article-level comments
+-   Generates contextual summaries
+-   Caches summaries for performance optimization
+
+### 3️⃣ Intelligent Comment Clustering
+
+-   Groups comments into thematic clusters
+-   Generates AI-based cluster headlines
+-   Returns topic percentage distribution
+
+### 4️⃣ Advanced Analytics Dashboard
+
+-   Sentiment distribution (%)
+-   Dominant emotion detection
+-   Positive vs Negative ratio
+-   Sentiment trend over time
+-   KPI generation for newsroom metrics
 
 ------------------------------------------------------------------------
 
 ## 🏗️ System Architecture
 
-Frontend (HTML/CSS/JS)\
+Frontend (HTML / CSS / JS)\
 ↓\
 FastAPI Backend\
 ↓\
-BERT NLP Model\
+MongoDB Database\
 ↓\
-Database Storage\
+Transformer-Based NLP Models\
 ↓\
-Analytics API\
-↓\
-Dashboard Visualization
+Analytics API Layer
 
 ------------------------------------------------------------------------
 
@@ -86,126 +75,168 @@ Dashboard Visualization
 
 ### Backend
 
--   Python
 -   FastAPI
 -   Uvicorn
--   Background Threading
-
-### AI / NLP
-
--   HuggingFace Transformers
--   BERT Model
--   PyTorch
-
-### Frontend
-
--   HTML
--   CSS
--   JavaScript
+-   Python Threading (background pipelines)
+-   Jinja2 Templates
 
 ### Database
 
--   SQLite / PostgreSQL
+-   MongoDB (PyMongo)
+-   Indexed collections:
+    -   `articles`
+    -   `comments`
+
+### AI / ML Layer
+
+-   Transformer-based Sentiment Model
+-   Custom Clustering Engine
+-   AI-Based Summary Generator
+
+### Frontend
+
+-   HTML Templates
+-   CSS Styling
+-   Vanilla JavaScript (analytics.js)
 
 ------------------------------------------------------------------------
 
-## 📊 Key Features
+## 📂 Actual Project Structure
 
--   📈 Sentiment Distribution Analytics
--   🧾 Auto-Generated Article Summaries
--   📊 Comment Count & Trend Analysis
--   ⚡ Real-Time Processing Pipeline
--   🔍 Context-Aware NLP Engine
+    Comments-Sentiment-Analysis-And-Summarizer---Newsroom-AI-main/
+    │
+    ├── Backend/
+    │   ├── main.py
+    │   ├── db.py
+    │   ├── clustering.py
+    │   ├── news_fetcher.py
+    │   ├── youtube_fetcher.py
+    │   └── __init__.py
+    │
+    ├── ML/
+    │   ├── config.py
+    │   ├── sentiment.py
+    │   └── summarizer.py
+    │
+    ├── templates/
+    │   ├── index.html
+    │   ├── articles.html
+    │   ├── article.html
+    │   └── analytics.html
+    │
+    ├── static/
+    │   ├── css/
+    │   ├── js/
+    │   └── images/
+    │
+    ├── requirements.txt
+    └── .gitignore
 
 ------------------------------------------------------------------------
 
-## ⚙️ Installation & Setup
+## 🔄 Background Pipelines
 
-### 1. Clone Repository
+On server startup:
+
+-   🔹 Article fetcher runs in a background thread\
+-   🔹 Emotion classification watcher starts\
+-   🔹 Model loads into memory\
+-   🔹 MongoDB indexing ensures performance
+
+This ensures real-time scalability and continuous processing.
+
+------------------------------------------------------------------------
+
+## 📊 Analytics API Features
+
+`/api/analytics/{article_id}` returns:
+
+-   Article metadata
+-   Total comment count
+-   Sentiment distribution
+-   Sentiment trend timeline
+-   Dominant emotion
+-   Positive vs Negative percentages
+-   Structured KPI metrics
+
+------------------------------------------------------------------------
+
+## ⚙️ Installation Guide
+
+### 1️⃣ Clone Repository
 
 ``` bash
 git clone https://github.com/your-username/newsroom-ai.git
-cd newsroom-ai
+cd Comments-Sentiment-Analysis-And-Summarizer---Newsroom-AI-main
 ```
 
-### 2. Create Virtual Environment
+### 2️⃣ Setup Environment
 
 ``` bash
 python -m venv venv
-source venv/bin/activate   # Mac/Linux
-venv\Scripts\activate      # Windows
+venv\Scripts\activate   # Windows
+source venv/bin/activate  # Mac/Linux
 ```
 
-### 3. Install Dependencies
+### 3️⃣ Install Dependencies
 
 ``` bash
 pip install -r requirements.txt
 ```
 
-### 4. Run Server
+### 4️⃣ Start MongoDB
+
+Ensure MongoDB is running locally:
+
+    mongodb://localhost:27017
+
+Database used:
+
+    newsroom_ai
+
+### 5️⃣ Run Application
 
 ``` bash
-uvicorn main:app --reload
+uvicorn Backend.main:app --reload
 ```
 
-Server will start at:
+App runs at:
 
-http://127.0.0.1:8000
+    http://127.0.0.1:8000
 
 ------------------------------------------------------------------------
 
-## 📁 Project Structure
+## 📈 Why This Project Stands Out
 
-    ├── main.py
-    ├── sentiment.py
-    ├── analytics.js
-    ├── models/
-    ├── database/
-    ├── static/
-    ├── templates/
-    └── README.md
+-   Real-time NLP pipeline with background watchers
+-   Clean separation of Backend / ML / Frontend layers
+-   MongoDB indexing for scalable performance
+-   Emotion-based sentiment (beyond simple positive/negative)
+-   Topic clustering with headline generation
+-   Production-style API design
 
 ------------------------------------------------------------------------
 
 ## 🔮 Future Enhancements
 
--   Toxicity Detection Module
--   Emotion Classification (Joy, Anger, Fear, etc.)
--   Multilingual Support
--   Real-Time Streaming Analysis
--   Cloud Deployment (AWS / Azure / GCP)
-
-------------------------------------------------------------------------
-
-## 🧪 Use Cases
-
--   News Media Organizations
--   Political Sentiment Monitoring
--   Social Media Intelligence Platforms
--   Market Opinion Analysis
--   Brand Reputation Tracking
-
-------------------------------------------------------------------------
-
-## 📌 Impact
-
-Newsroom AI converts unstructured user comments into actionable newsroom
-insights, enabling faster editorial decisions and data-driven
-journalism.
+-   Toxicity detection module
+-   Multilingual transformer support
+-   Real-time WebSocket updates
+-   Cloud deployment (Docker + AWS)
+-   Live dashboard streaming
 
 ------------------------------------------------------------------------
 
 ## 👨‍💻 Author
 
-Developed as an AI-focused innovation project showcasing practical NLP
-implementation and scalable backend architecture.
+Developed as a full-stack AI engineering project demonstrating applied
+NLP, scalable backend design, and real-world analytics architecture.
 
 ------------------------------------------------------------------------
 
 ## 📜 License
 
-This project is intended for academic, research, and demonstration
-purposes.
+Academic / Research Use
 
 ------------------------------------------------------------------------
 
